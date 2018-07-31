@@ -50,7 +50,7 @@ DEFAULT_REQUEST_HEADERS ={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) Appl
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-    'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware': 350,'ooxx.middlewares.HttpProxyMiddleware': 543, 'scrapy.contrib.downloadermiddleware.retry.RetryMiddleware':None,}
+    'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware': 350,'ooxx.middlewares.HttpProxyMiddleware': 543, 'ooxx.middlewares.SeleniumMiddleware': 600,'scrapy.contrib.downloadermiddleware.retry.RetryMiddleware':None,}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html

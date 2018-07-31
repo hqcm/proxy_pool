@@ -12,7 +12,7 @@ from twisted.internet.error import (ConnectError, ConnectionLost,
                                     ConnectionRefusedError, TCPTimedOutError,
                                     TimeoutError)
 from twisted.web._newclient import ResponseNeverReceived
-sys.path.append(r'C:\Users\Administrator\Desktop\代理池\ooxx')
+sys.path.append(r'C:\Users\Administrator\Desktop\proxy_pool\ooxx')
 import fetch_free_proxies
 
 
@@ -133,16 +133,12 @@ class SeleniumMiddleware(object):
     def process_request(cls, request, spider):
         if 'Firefox' in request.meta:
             logger.info('正在使用无头浏览器')
+            #采用的是代理ip 
             if 'proxy' in request.meta:
                 logger.info(request.meta['proxy'])
             options = Options()
             options.add_argument('-headless')  
             driver=webdriver.Firefox(executable_path=r'D:\Program Files (x86)\Mozilla Firefox\geckodriver',firefox_options=options)
-            url='http://ip.chinaz.com/getip.aspx/'
-            driver.get(url)
-            driver.implicitly_wait(5)
-            content = driver.page_source
-            print (content)
             driver.get(request.url)
             #页面渲染可能较慢，尤其是在网速较差的时候，所以需要暂停一段时间
             driver.implicitly_wait(20)

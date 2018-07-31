@@ -16,7 +16,7 @@ class ooxx(scrapy.Spider):
     def start_requests(self):
         url = 'http://ip.chinaz.com/getip.aspx'
         for _ in range(3):
-            yield Request(url=url, callback=self.parse, dont_filter=True)
+            yield Request(url=url, meta={'Firefox': True}, callback=self.parse, dont_filter=True)
 
     def parse(self,response):
         #查询ip的网站
